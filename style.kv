@@ -1,0 +1,100 @@
+#:import utils kivy.utils
+
+
+Screen:
+    name: 'antichrist_app'
+
+    FloatLayout:
+        id: antichrist_start
+        orientation: 'vertical'
+
+        FitImage:
+            id: photo
+            source: 'image_files/lilith.jpg'
+
+        MDLabel:
+            id: title
+            pos_hint: {"center_x": 0.5, "center_y": 0.8}
+            text: "[color=#fedcff]Antichrist[/color]"
+            text_size: self.size
+            font_size: 80
+            bold: True
+            markup: True
+            halign: "center"
+            valign: "middle"
+
+        MDLabel:
+            id: you_dead_data
+            pos_hint: {"center_x": 8, "center_y": 8}
+            text: "[color=#cc235f]Твои неудачи будут увеличиваться день за днём, пока одна из неудач не приведет тебя к смерти[/color]"
+            text_size: self.size
+            font_size: 30
+            bold: True
+            markup: True
+            halign: "center"
+            valign: "middle"
+
+        MDTextField:
+            id: target
+            pos_hint: {"center_x": 0.5, "center_y": 0.6}
+            hint_text: 'Phone number'
+            color_mode: 'custom'
+            phone_number_color: "#fedcff"
+            line_color_focus: utils.get_color_from_hex(self.phone_number_color)
+            line_color_normal: utils.get_color_from_hex(self.phone_number_color)
+            size_hint_x: 0.8
+            on_touch_up: app.bufer(True, target)
+
+        MDFillRoundFlatButton:
+            id: menu_button
+            text: "Ultra"
+            menu_mode_color: "#fedcff"
+            menu_mode_color_text: "#000000"
+            md_bg_color: utils.get_color_from_hex(self.menu_mode_color)
+            text_color: utils.get_color_from_hex(self.menu_mode_color_text)
+            menu_button_anim: 0.2
+            pos_hint: {"center_x": self.menu_button_anim, "center_y": 0.5}
+            size_hint_x: 0.2
+            on_release: app.modes(menu_button)
+
+        MDFillRoundFlatButton:
+            id: button_attack_cancel
+            text: "Attack"
+            attack_color: "#fedcff"
+            attack_color_text: "#000000"
+            md_bg_color: utils.get_color_from_hex(self.attack_color)
+            text_color: utils.get_color_from_hex(self.attack_color_text)
+            welcome_to_hell: 0.3
+            size_hint_x: self.welcome_to_hell
+            pos_hint: {"center_x": 0.5, "center_y": 0.5}
+            on_release: app.attack(attack=target)
+
+        MDFillRoundFlatButton:
+            id: what_button
+            text: "Mix"
+            what_color: "#fedcff"
+            what_color_text: "#000000"
+            md_bg_color: utils.get_color_from_hex(self.what_color)
+            text_color: utils.get_color_from_hex(self.what_color_text)
+            what_button_anim: 0.8
+            pos_hint: {"center_x": self.what_button_anim, "center_y": 0.5}
+            size_hint_x: 0.2
+            on_release: app.whats(what_button)
+
+        MDLabel:
+            id: label
+            font_size: 65
+            bold: True
+            markup: True
+            halign: 'center'
+            pos_hint: {"center_x": 0.5, "center_y": 0.3}
+
+        MDTextButton:
+            id: link_tg
+            center_y_1: 0.2
+            font_size: 40
+            text: '[color=#fedcff]t.me/antichristone[/color]'
+            bold: True
+            markup: True
+            on_release: app.link()
+            pos_hint: {"center_x": 0.5, "center_y": self.center_y_1}
